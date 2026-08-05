@@ -36,7 +36,7 @@ Este proyecto implementa esas cuatro piezas como una aplicación única, con aut
 | Mapa de flota + simulación de vehículos | ✅ Completo | Simulación por backend (no GPS real todavía); diseñado para aceptarlo a futuro |
 | Notificaciones de UI | 🟡 Parcial | Reemplazadas por Material Snackbar en checkout; quedan `alert()`/`confirm()` nativos del navegador en `admin-products`, `product-detail` y `register` |
 | Pasarela de pago real | ⛔ Pendiente | No implementada (no hay integración con Stripe/PayPal/etc.) |
-| Tests automatizados | ⛔ Pendiente | No hay suite de tests (backend ni frontend) |
+| Tests automatizados | 🟡 Parcial | 12 tests de backend (pytest) sobre `auth.py`/`crud.py` y 8 de frontend (Jasmine/Karma) sobre `AuthService`/`AdminGuard`. Cubre lo más crítico (login, JWT, stock, checkout), no hay cobertura completa |
 | CI/CD | ⛔ Pendiente | No configurado |
 
 ## Stack técnico
@@ -101,6 +101,17 @@ ng serve --open
 ```
 
 Aplicación en `http://localhost:4200`.
+
+### Tests
+
+```bash
+# Backend (desde backend/, con el venv activado)
+pip install -r requirements-dev.txt
+pytest
+
+# Frontend (desde frontend/)
+npm test
+```
 
 ### Scripts de arranque rápido (Windows)
 
