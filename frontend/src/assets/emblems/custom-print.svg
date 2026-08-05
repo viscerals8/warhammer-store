@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <radialGradient id="cp-bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#241830"/>
+      <stop offset="100%" stop-color="#120c18"/>
+    </radialGradient>
+    <radialGradient id="cp-glow" cx="50%" cy="45%" r="42%">
+      <stop offset="0%" stop-color="#c0c0c0" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#c0c0c0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cp-silver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8e8e8"/>
+      <stop offset="100%" stop-color="#8a8a8a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#cp-bg)"/>
+  <circle cx="200" cy="140" r="110" fill="url(#cp-glow)"/>
+
+  <!-- mechanicus cog halo -->
+  <g fill="none" stroke="#d4af37" stroke-width="3">
+    <circle cx="200" cy="140" r="86"/>
+  </g>
+  <g fill="#d4af37">
+    <g id="cog-teeth">
+      <rect x="196" y="46" width="8" height="16"/>
+      <rect x="196" y="218" width="8" height="16"/>
+      <rect x="108" y="136" width="16" height="8"/>
+      <rect x="276" y="136" width="16" height="8"/>
+      <rect x="140" y="70" width="8" height="16" transform="rotate(45 144 78)"/>
+      <rect x="252" y="70" width="8" height="16" transform="rotate(-45 256 78)"/>
+      <rect x="140" y="196" width="8" height="16" transform="rotate(-45 144 204)"/>
+      <rect x="252" y="196" width="8" height="16" transform="rotate(45 256 204)"/>
+    </g>
+  </g>
+
+  <!-- print nozzle -->
+  <g fill="url(#cp-silver)" stroke="#5a5a5a" stroke-width="1.5">
+    <rect x="184" y="86" width="32" height="46" rx="3"/>
+    <polygon points="184,132 216,132 204,150 196,150"/>
+    <rect x="198" y="150" width="4" height="10" fill="#8b0000" stroke="none"/>
+  </g>
+  <!-- resin drop -->
+  <path d="M200 162 c6 8 6 16 0 20 c-6 -4 -6 -12 0 -20 z" fill="#8b0000" opacity="0.85"/>
+
+  <!-- printed layers base -->
+  <g fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.8">
+    <rect x="176" y="182" width="48" height="6"/>
+    <rect x="180" y="190" width="40" height="6"/>
+    <rect x="184" y="198" width="32" height="6"/>
+  </g>
+
+  <text x="200" y="252" text-anchor="middle" font-family="Cinzel, serif" font-size="16" fill="#e8e8e8" letter-spacing="3">FORGE-PRINTED</text>
+</svg>

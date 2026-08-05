@@ -1,0 +1,39 @@
+<div class="fleet-page">
+  <div class="page-header">
+    <h1>Flota &amp; Zonas de Envio</h1>
+    <p class="subtitle">Cobertura de despacho y posicion en vivo de los vehiculos (simulado)</p>
+  </div>
+
+  <div class="fleet-layout">
+    <div class="map-panel frosted-panel">
+      <div id="fleet-map"></div>
+    </div>
+
+    <div class="side-panel">
+      <div class="vehicles-card frosted-panel">
+        <h3>Vehiculos</h3>
+        <div class="vehicle-row" *ngFor="let v of vehicles">
+          <span class="dot" [class.idle]="v.status === 'idle'" [class.delivering]="v.status === 'delivering'" [class.returning]="v.status === 'returning'"></span>
+          <div class="vehicle-info">
+            <strong>{{v.name}}</strong>
+            <small>{{v.driver_name}} &middot; {{v.plate}}</small>
+          </div>
+          <span class="status-label">{{v.status}}</span>
+        </div>
+        <p class="empty-note" *ngIf="!vehicles.length">Sin vehiculos activos.</p>
+      </div>
+
+      <div class="zones-card frosted-panel">
+        <h3>Zonas de cobertura</h3>
+        <div class="zone-row" *ngFor="let z of zones">
+          <span class="zone-swatch" [style.background]="z.color"></span>
+          <div class="zone-info">
+            <strong>{{z.name}}</strong>
+            <small>{{z.description}}</small>
+          </div>
+          <span class="zone-cost">${{z.shipping_cost.toFixed(2)}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

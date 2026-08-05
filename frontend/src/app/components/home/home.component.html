@@ -1,0 +1,77 @@
+<div class="hero">
+  <div class="hero-embers" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <mat-card class="hero-card reveal">
+    <div class="hero-frame-corner tl"></div>
+    <div class="hero-frame-corner tr"></div>
+    <div class="hero-frame-corner bl"></div>
+    <div class="hero-frame-corner br"></div>
+    <mat-card-content>
+      <div class="hero-glyph">&#10016;</div>
+      <h1 class="glow-title">Welcome to Warhammer Store</h1>
+      <p>Your premier destination for Warhammer miniatures and custom 3D prints</p>
+      <button mat-raised-button color="primary" (click)="viewAllProducts()">
+        Browse Products
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="featured-section mt-3">
+  <div class="section-header reveal">
+    <h2><span class="ornate-divider"><span class="glyph"></span></span> Featured Products</h2>
+    <button mat-stroked-button (click)="viewAllProducts()">View All</button>
+  </div>
+
+  <div class="products-grid" *ngIf="!loading">
+    <mat-card class="product-card reveal" [style.animation-delay.ms]="i * 80" *ngFor="let product of featuredProducts; let i = index" (click)="viewProduct(product.id)">
+      <div class="product-badge" *ngIf="product.category">
+        {{product.category.name | slice:0:3}}
+      </div>
+      <div class="status-badges">
+        <span class="badge new" *ngIf="product.stock_quantity >= 50">NEW</span>
+        <span class="badge low-stock" *ngIf="product.stock_quantity <= 5">LOW STOCK</span>
+      </div>
+      <img mat-card-image [src]="product.image_urls?.[0] || 'https://via.placeholder.com/300x200'" alt="{{product.name}}">
+      <mat-card-content>
+        <h3>{{product.name}}</h3>
+        <p class="category-text">{{product.category?.name || 'General'}}</p>
+        <div class="price-row">
+          <span class="price">${{product.price | number:'1.2-2'}}</span>
+          <span class="stock" [class.low]="product.stock_quantity < product.min_stock_level">
+            {{product.stock_quantity}} in stock
+          </span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary">View Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="loading-container" *ngIf="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <p>Loading products...</p>
+  </div>
+
+  <div class="empty-state" *ngIf="!loading && featuredProducts.length === 0">
+    <mat-icon>inventory_2</mat-icon>
+    <p>No products available at the moment.</p>
+  </div>
+
+  <div class="testimonials-section mt-3">
+    <h2 class="reveal"><span class="ornate-divider"><span class="glyph"></span></span> What Our Customers Say</h2>
+    <div class="testimonials-grid">
+      <mat-card class="testimonial-card reveal" [style.animation-delay.ms]="i * 100" *ngFor="let testimonial of testimonials; let i = index">
+        <mat-card-content>
+          <div class="stars">
+            <mat-icon *ngFor="let star of [1,2,3,4,5]">star</mat-icon>
+          </div>
+          <p class="testimonial-text">{{testimonial.text}}</p>
+          <div class="testimonial-author">- {{testimonial.author}}</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

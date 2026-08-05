@@ -1,0 +1,108 @@
+<div class="cart-page">
+  <h1>Shopping Cart</h1>
+
+  <div class="cart-content" *ngIf="!loading">
+    @if (cart && cart.items.length > 0) {
+      <div class="cart-items">
+        <mat-table [dataSource]="cart.items">
+          <ng-container matColumnDef="product">
+            <mat-header-cell *matHeaderCellDef>Product</mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              <div class="product-cell">
+                <img [src]="item.product.image_urls?.[0] || 'https://via.placeholder.com/60x60'" alt="{{item.product.name}}">
+                <div>
+                  <strong>{{item.product.name}}</strong>
+                  <p class="sku">SKU: {{item.product.sku}}</p>
+                </div>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              ${{item.product.price | number:'1.2-2'}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              <div class="quantity-controls">
+                <button mat-icon-button (click)="updateQuantity(item, item.quantity - 1)">
+                  <mat-icon>remove</mat-icon>
+                </button>
+                <span>{{item.quantity}}</span>
+                <button mat-icon-button (click)="updateQuantity(item, item.quantity + 1)" [disabled]="item.quantity >= item.product.stock_quantity">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="total">
+            <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              ${{(item.product.price * item.quantity) | number:'1.2-2'}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              <button mat-icon-button color="warn" (click)="removeItem(item.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="['product', 'price', 'quantity', 'total', 'actions']"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: ['product', 'price', 'quantity', 'total', 'actions'];"></mat-row>
+        </mat-table>
+      </div>
+
+      <div class="cart-summary">
+        <mat-card>
+          <mat-card-content>
+            <h3>Order Summary</h3>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span>${{cart.total | number:'1.2-2'}}</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>Calculated at checkout</span>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span>${{cart.total | number:'1.2-2'}}</span>
+            </div>
+            <button mat-raised-button color="primary" class="checkout-btn" (click)="proceedToCheckout()">
+              Proceed to Checkout
+            </button>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="cart-actions">
+          <button mat-stroked-button (click)="clearCart()">Clear Cart</button>
+          <button mat-stroked-button (click)="continueShopping()">Continue Shopping</button>
+        </div>
+      </div>
+    } @else {
+      <div class="empty-cart">
+        <mat-icon>shopping_cart</mat-icon>
+        <h2>Your cart is empty</h2>
+        <p>Add some products to get started!</p>
+        <button mat-raised-button color="primary" (click)="continueShopping()">
+          Browse Products
+        </button>
+      </div>
+    }
+  </div>
+
+  <div class="loading-container" *ngIf="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <p>Loading cart...</p>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <radialGradient id="tr-bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#232323"/>
+      <stop offset="100%" stop-color="#121212"/>
+    </radialGradient>
+    <radialGradient id="tr-glow" cx="50%" cy="45%" r="42%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tr-stone" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9a9a9a"/>
+      <stop offset="100%" stop-color="#4d4d4d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#tr-bg)"/>
+  <circle cx="200" cy="140" r="110" fill="url(#tr-glow)"/>
+
+  <g stroke="#d4af37" stroke-width="2" opacity="0.6">
+    <path d="M16 16 h22 M16 16 v22" fill="none"/>
+    <path d="M384 16 h-22 M384 16 v22" fill="none"/>
+    <path d="M16 284 h22 M16 284 v-22" fill="none"/>
+    <path d="M384 284 h-22 M384 284 v-22" fill="none"/>
+  </g>
+
+  <!-- ruined gothic tower -->
+  <g fill="url(#tr-stone)" stroke="#2b2b2b" stroke-width="2">
+    <rect x="168" y="120" width="64" height="90" />
+    <path d="M168 120 l0 -20 l12 -14 l0 14 l10 -12 l0 16 l10 -10 l0 12 l10 -8 l0 10 l12 -6 l0 32 z"/>
+    <rect x="184" y="150" width="14" height="20" fill="#1a1a1a" stroke="none"/>
+    <rect x="204" y="176" width="12" height="16" fill="#1a1a1a" stroke="none"/>
+  </g>
+  <!-- crack -->
+  <path d="M198 122 l6 20 l-8 18 l10 24 l-6 26" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- rubble -->
+  <g fill="#5c5c5c" stroke="#2b2b2b" stroke-width="1.5">
+    <polygon points="120,210 148,196 158,214 132,224"/>
+    <polygon points="250,214 272,200 292,212 268,228"/>
+    <polygon points="150,222 168,212 182,224 162,232"/>
+  </g>
+
+  <!-- gold banner accent -->
+  <path d="M200 108 l0 -10 M192 100 l16 0 l-4 10 l-8 0 z" fill="#d4af37" stroke="none"/>
+
+  <text x="200" y="252" text-anchor="middle" font-family="Cinzel, serif" font-size="16" fill="#d4af37" letter-spacing="3">RUINED WORLDS</text>
+</svg>

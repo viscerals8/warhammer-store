@@ -1,0 +1,476 @@
+/* Global styles */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root {
+  --primary-color: #8b0000;
+  --primary-dark: #5a0000;
+  --accent-color: #c0c0c0;
+  --gold-color: #d4af37;
+  --gold-bright: #ffd700;
+  --dark-bg: #1a1a2e;
+  --card-bg: rgba(26, 26, 46, 0.85);
+  --text-primary: #f0f0f0;
+  --text-secondary: #c0c0c0;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+/* Keyframe library */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 8px rgba(212, 175, 55, 0.4), 0 0 18px rgba(212, 175, 55, 0.2); }
+  50% { text-shadow: 0 0 18px rgba(212, 175, 55, 0.85), 0 0 34px rgba(212, 175, 55, 0.45); }
+}
+
+@keyframes emberRise {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-180px) translateX(var(--drift, 10px)); opacity: 0; }
+}
+
+@keyframes ringPulse {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.55); }
+  100% { box-shadow: 0 0 0 14px rgba(212, 175, 55, 0); }
+}
+
+.reveal {
+  animation: fadeInUp 0.6s ease both;
+}
+
+/* Reusable gothic corner frame + glyph, for cards that need the imperial-seal treatment */
+.frame-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--gold-color);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.frame-corner.tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.frame-corner.tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.frame-corner.bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.frame-corner.br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+/* Frosted glass panel - for text/headers that would otherwise sit directly on the busy background image */
+.frosted-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+}
+
+.auth-glyph {
+  font-size: 1.8rem;
+  color: var(--gold-color);
+  text-align: center;
+  animation: glowPulse 3s infinite;
+  margin-bottom: 4px;
+}
+
+/* Ornate section divider */
+.ornate-divider {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold-color);
+}
+
+.ornate-divider::before,
+.ornate-divider::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-color));
+}
+
+.ornate-divider::after {
+  background: linear-gradient(90deg, var(--gold-color), transparent);
+}
+
+.ornate-divider .glyph {
+  transform: rotate(45deg);
+  width: 7px;
+  height: 7px;
+  background: var(--gold-color);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+}
+
+/* Themed scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--gold-color), var(--primary-dark));
+  border-radius: 6px;
+  border: 2px solid var(--dark-bg);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: url('http://localhost:8000/media/products/Tecnosacerdote_Wikihammer_4.webp') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-primary);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 26, 0.82);
+  z-index: -1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Spacing utilities */
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+
+/* Card styles */
+.product-card {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s, border-color 0.35s;
+  background: var(--card-bg);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-color), transparent);
+  transition: left 0.5s;
+  z-index: 3;
+}
+
+/* HUD-style corner brackets that light up on hover, tech-priest interface feel */
+.product-card::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s;
+  z-index: 3;
+  background-image:
+    linear-gradient(var(--gold-bright), var(--gold-bright)), linear-gradient(var(--gold-bright), var(--gold-bright)),
+    linear-gradient(var(--gold-bright), var(--gold-bright)), linear-gradient(var(--gold-bright), var(--gold-bright)),
+    linear-gradient(var(--gold-bright), var(--gold-bright)), linear-gradient(var(--gold-bright), var(--gold-bright)),
+    linear-gradient(var(--gold-bright), var(--gold-bright)), linear-gradient(var(--gold-bright), var(--gold-bright));
+  background-position: top left, top left, top right, top right, bottom left, bottom left, bottom right, bottom right;
+  background-size: 16px 2px, 2px 16px, 16px 2px, 2px 16px, 16px 2px, 2px 16px, 16px 2px, 2px 16px;
+  background-repeat: no-repeat;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(212, 175, 55, 0.4), 0 0 0 1px rgba(212, 175, 55, 0.2) inset;
+  border-color: var(--gold-color);
+}
+
+.product-card:hover::before {
+  left: 100%;
+}
+
+.product-card:hover::after {
+  opacity: 1;
+}
+
+.product-card img {
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.06);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Buttons */
+.mat-raised-button.mat-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  border: 1px solid var(--gold-color);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.15s;
+}
+
+.mat-raised-button.mat-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.mat-raised-button.mat-primary:hover {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.mat-raised-button.mat-primary:hover::after {
+  left: 130%;
+}
+
+.mat-raised-button.mat-primary:active {
+  transform: scale(0.97);
+}
+
+/* Icons */
+.mat-icon {
+  color: var(--gold-color);
+}
+
+/* Links */
+a {
+  color: var(--gold-color);
+}
+
+a:hover {
+  color: #ffd700;
+}
+
+/* Material card overrides */
+.mat-card,
+.mat-mdc-card {
+  background: var(--card-bg) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(5px);
+  --mdc-elevated-card-container-color: var(--card-bg);
+}
+
+.mat-mdc-card-title,
+.mat-mdc-card-subtitle,
+.mat-mdc-card-content {
+  color: var(--text-primary);
+}
+
+/* Tables (cart, admin orders/products) */
+.mat-mdc-table.mdc-data-table__table,
+.mat-mdc-table {
+  background: var(--card-bg) !important;
+}
+
+.mat-mdc-header-row.mdc-data-table__header-row,
+.mat-mdc-header-row {
+  background: rgba(139, 0, 0, 0.25) !important;
+}
+
+.mat-mdc-header-cell {
+  color: var(--gold-color) !important;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--gold-color) !important;
+}
+
+.mat-mdc-row.mdc-data-table__row,
+.mat-mdc-row {
+  background: transparent !important;
+  transition: background 0.2s;
+}
+
+.mat-mdc-row:hover {
+  background: rgba(212, 175, 55, 0.08) !important;
+}
+
+.mat-mdc-cell {
+  color: var(--text-primary) !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15) !important;
+}
+
+/* Divider */
+.mat-divider {
+  border-top-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Select dropdown */
+.mat-mdc-select-value,
+.mat-mdc-select-arrow {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-select-panel {
+  background: var(--dark-bg) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.mat-mdc-option {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-option:hover:not(.mdc-list-item--disabled),
+.mat-mdc-option.mat-mdc-option-active {
+  background: rgba(212, 175, 55, 0.12) !important;
+}
+
+.mat-mdc-paginator {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+.mat-toolbar {
+  background: rgba(26, 26, 46, 0.95) !important;
+  border-bottom: 1px solid var(--gold-color);
+  backdrop-filter: blur(10px);
+}
+
+/* Dark-theme form fields (search box, login/register/checkout inputs) - Angular Material 17 MDC form-field */
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: rgba(212, 175, 55, 0.5);
+  --mdc-outlined-text-field-hover-outline-color: rgba(212, 175, 55, 0.8);
+  --mdc-outlined-text-field-focus-outline-color: var(--gold-color);
+  --mdc-outlined-text-field-label-text-color: var(--text-secondary);
+  --mdc-outlined-text-field-focus-label-text-color: var(--gold-color);
+  --mdc-outlined-text-field-input-text-color: var(--text-primary);
+  --mdc-outlined-text-field-container-shape: 4px;
+  --mat-form-field-container-text-color: var(--text-primary);
+}
+
+.mat-mdc-text-field-wrapper {
+  background: rgba(15, 15, 26, 0.92);
+  border-radius: 4px;
+}
+
+.mat-mdc-form-field-input-control,
+.mat-mdc-form-field-input-control::placeholder {
+  color: var(--text-primary);
+}
+
+/* Dialogs (add/edit product form, confirmations) */
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background: var(--dark-bg) !important;
+  border: 1px solid var(--gold-color);
+  box-shadow: 0 0 30px rgba(139, 0, 0, 0.4);
+}
+
+.mat-mdc-dialog-title {
+  font-family: var(--font-display) !important;
+  color: var(--gold-color) !important;
+  letter-spacing: 1px;
+}
+
+.mat-mdc-dialog-content {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-dialog-actions {
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Expansion panel (Advanced Options) */
+.mat-expansion-panel {
+  background: rgba(15, 15, 26, 0.6) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.mat-expansion-panel-header-title {
+  color: var(--gold-color) !important;
+  font-family: var(--font-display);
+}
+
+.mat-expansion-panel-header-description,
+.mat-expansion-indicator::after {
+  color: var(--gold-color) !important;
+}
+
+.mat-expansion-panel-body {
+  color: var(--text-primary);
+}
+
+/* Checkboxes */
+.mat-mdc-checkbox label {
+  color: var(--text-primary);
+}
+
+.mat-mdc-checkbox .mdc-checkbox__background {
+  border-color: rgba(212, 175, 55, 0.6) !important;
+}
+
+.mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background {
+  background-color: var(--gold-color) !important;
+  border-color: var(--gold-color) !important;
+}
+
+.mat-mdc-checkbox .mdc-checkbox__checkmark {
+  color: var(--dark-bg) !important;
+}
+
+/* Themed notifications (replaces native browser alert()) */
+.wh-snackbar .mdc-snackbar__surface {
+  background: var(--dark-bg) !important;
+  border: 1px solid var(--gold-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 6px !important;
+}
+
+.wh-snackbar .mdc-snackbar__label {
+  color: var(--text-primary) !important;
+  font-family: var(--font-body);
+}
+
+.wh-snackbar .mat-mdc-snack-bar-action {
+  color: var(--gold-color) !important;
+}
+
+.wh-snackbar-success .mdc-snackbar__surface {
+  border-color: #4caf50;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+}
+
+.wh-snackbar-error .mdc-snackbar__surface {
+  border-color: #8b0000;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
+}

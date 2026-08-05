@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <radialGradient id="ch-bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#2a0f14"/>
+      <stop offset="100%" stop-color="#120608"/>
+    </radialGradient>
+    <radialGradient id="ch-glow" cx="50%" cy="45%" r="42%">
+      <stop offset="0%" stop-color="#8b0000" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#8b0000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ch-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#5a3a10"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#ch-bg)"/>
+  <circle cx="200" cy="140" r="110" fill="url(#ch-glow)"/>
+
+  <!-- jagged broken ring, corrupted version of the gold ring motif -->
+  <path d="M114 140 a86 86 0 1 1 12 44 M296 140 a86 86 0 1 1 -30 -66"
+        fill="none" stroke="#8b0000" stroke-width="3" opacity="0.85"/>
+  <circle cx="200" cy="140" r="94" fill="none" stroke="#5a3a10" stroke-width="1" stroke-dasharray="4 8" opacity="0.6"/>
+
+  <!-- 8-pointed chaos star, irregular/jagged -->
+  <g fill="url(#ch-metal)" stroke="#1c0a0c" stroke-width="1.5">
+    <path d="M200 58 L214 108 L268 92 L228 130 L272 158 L216 156 L226 210 L200 164
+             L174 210 L184 156 L128 158 L172 130 L132 92 L186 108 Z"/>
+  </g>
+  <circle cx="200" cy="140" r="14" fill="#8b0000" stroke="#1c0a0c" stroke-width="1.5"/>
+
+  <!-- cracks radiating -->
+  <g stroke="#8b0000" stroke-width="1.5" opacity="0.7">
+    <path d="M200 140 l-50 -40 M200 140 l60 -30 M200 140 l40 60 M200 140 l-55 35" fill="none"/>
+  </g>
+
+  <text x="200" y="252" text-anchor="middle" font-family="Cinzel, serif" font-size="16" fill="#d4af37" letter-spacing="3">THE DAMNED LEGIONS</text>
+</svg>

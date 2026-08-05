@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <span class="spacer"></span>
+  <span class="logo"><span class="emblem">&#10016;</span> WARHAMMER STORE</span>
+  <span class="spacer"></span>
+
+  <div class="nav-links">
+    <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+    <a mat-button routerLink="/products" routerLinkActive="active">Products</a>
+    <a mat-button routerLink="/cart" routerLinkActive="active">
+      <mat-icon>shopping_cart</mat-icon>
+      <span class="cart-badge" *ngIf="cartItemCount > 0">{{cartItemCount}}</span>
+    </a>
+     <a mat-button routerLink="/admin/orders" routerLinkActive="active" *ngIf="isAdmin">
+       <mat-icon>receipt_long</mat-icon>
+       Orders
+     </a>
+     <a mat-button routerLink="/admin/products" routerLinkActive="active" *ngIf="isAdmin">
+       <mat-icon>inventory_2</mat-icon>
+       Products
+     </a>
+     <a mat-button routerLink="/admin/fleet" routerLinkActive="active" *ngIf="isAdmin">
+       <mat-icon>local_shipping</mat-icon>
+       Flota
+     </a>
+    <a mat-button routerLink="/dashboard" routerLinkActive="active" *ngIf="isAdmin">
+      <mat-icon>dashboard</mat-icon>
+    </a>
+  </div>
+
+  <span class="spacer"></span>
+
+  <div class="auth-buttons" *ngIf="!isLoggedIn; else loggedIn">
+    <a mat-button routerLink="/login">Login</a>
+    <a mat-button routerLink="/register" class="register-btn">Register</a>
+  </div>
+
+  <ng-template #loggedIn>
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </ng-template>
+</mat-toolbar>
+
+<a class="whatsapp-float" href="https://wa.me/1234567890" target="_blank" matTooltip="Contact us on WhatsApp">
+  <mat-icon>whatsapp</mat-icon>
+</a>

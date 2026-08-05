@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <radialGradient id="sm-bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#241830"/>
+      <stop offset="100%" stop-color="#120c18"/>
+    </radialGradient>
+    <radialGradient id="sm-glow" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#8b0000" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8b0000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sm-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#a8842e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#sm-bg)"/>
+  <circle cx="200" cy="140" r="110" fill="url(#sm-glow)"/>
+
+  <!-- corner HUD brackets -->
+  <g stroke="#d4af37" stroke-width="2" opacity="0.7">
+    <path d="M16 16 h22 M16 16 v22" fill="none"/>
+    <path d="M384 16 h-22 M384 16 v22" fill="none"/>
+    <path d="M16 284 h22 M16 284 v-22" fill="none"/>
+    <path d="M384 284 h-22 M384 284 v-22" fill="none"/>
+  </g>
+
+  <!-- ornate rings -->
+  <circle cx="200" cy="140" r="86" fill="none" stroke="url(#sm-gold)" stroke-width="3"/>
+  <circle cx="200" cy="140" r="94" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+  <g stroke="#d4af37" stroke-width="1.5" opacity="0.8">
+    <line x1="200" y1="46" x2="200" y2="60"/>
+    <line x1="200" y1="220" x2="200" y2="234"/>
+    <line x1="106" y1="140" x2="120" y2="140"/>
+    <line x1="280" y1="140" x2="294" y2="140"/>
+  </g>
+
+  <!-- stylized imperial double-headed eagle -->
+  <g fill="url(#sm-gold)" stroke="#5a4415" stroke-width="1">
+    <!-- body -->
+    <path d="M200 108 c-10 0-16 10-16 22 c0 14 8 26 16 34 c8-8 16-20 16-34 c0-12-6-22-16-22 z"/>
+    <!-- left head -->
+    <circle cx="176" cy="112" r="10"/>
+    <path d="M166 112 l-14 -6 l4 8 l-4 8 z"/>
+    <!-- right head -->
+    <circle cx="224" cy="112" r="10"/>
+    <path d="M234 112 l14 -6 l-4 8 l4 8 z"/>
+    <!-- left wing feathers -->
+    <path d="M184 122 c-26 -6 -46 2 -62 18 c14 -2 26 0 36 6 c-16 4 -30 12 -40 26 c16 -4 30 -6 42 -2 c-10 8 -18 18 -22 30 c14 -8 26 -14 38 -14 z"/>
+    <!-- right wing feathers -->
+    <path d="M216 122 c26 -6 46 2 62 18 c-14 -2 -26 0 -36 6 c16 4 30 12 40 26 c-16 -4 -30 -6 -42 -2 c10 8 18 18 22 30 c-14 -8 -26 -14 -38 -14 z"/>
+    <!-- tail feathers -->
+    <path d="M192 158 l8 26 l8 -26 l-4 30 l-8 4 l-8 -4 z"/>
+  </g>
+
+  <text x="200" y="252" text-anchor="middle" font-family="Cinzel, serif" font-size="17" fill="#d4af37" letter-spacing="3">ADEPTUS ASTARTES</text>
+</svg>

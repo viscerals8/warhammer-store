@@ -1,0 +1,143 @@
+.filters-section {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.search-field {
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-field .mat-form-field-outline {
+  color: var(--gold-color);
+}
+
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-filters button {
+  transition: all 0.2s;
+  border: 1px solid var(--primary-color);
+  color: var(--text-secondary);
+  background: rgba(26, 26, 46, 0.5);
+}
+
+.category-filters button.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--gold-color);
+  border-color: var(--gold-color);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.products-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  height: 100%;
+  background: var(--card-bg);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.product-card img {
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.product-header h3 {
+  margin: 16px 0 4px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  min-height: 2.8em;
+  color: var(--text-primary);
+}
+
+.sku {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.category-tag {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 8px 0;
+  font-style: italic;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--gold-color);
+}
+
+.stock {
+  font-size: 0.85rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.stock.low-stock {
+  background: rgba(198, 40, 40, 0.2);
+  color: #c62828;
+}
+
+.stock.warning {
+  background: rgba(239, 108, 0, 0.2);
+  color: #ef6c00;
+}
+
+mat-card-actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  margin-top: auto;
+}
+
+mat-paginator {
+  margin-top: 24px;
+}
+
+.loading-container,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px;
+  gap: 16px;
+  color: var(--text-secondary);
+}
+
+.empty-state mat-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  color: var(--gold-color);
+}

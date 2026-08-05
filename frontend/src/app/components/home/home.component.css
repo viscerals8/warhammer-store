@@ -1,0 +1,286 @@
+.product-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: linear-gradient(135deg, var(--gold-color), #ffd700);
+  color: var(--dark-bg);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.status-badges {
+  position: absolute;
+  top: 40px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 2;
+}
+
+.badge {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.badge.new {
+  background: linear-gradient(135deg, #4caf50, #8bc34a);
+  color: white;
+}
+
+.badge.low-stock {
+  background: linear-gradient(135deg, #ff9800, #ffc107);
+  color: var(--dark-bg);
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.hero-embers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-embers span {
+  position: absolute;
+  bottom: 10%;
+  width: 4px;
+  height: 4px;
+  background: var(--gold-color);
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px rgba(212, 175, 55, 0.6);
+  animation: emberRise 4s infinite ease-in;
+  opacity: 0;
+}
+
+.hero-embers span:nth-child(1) { left: 8%; animation-delay: 0s; --drift: 10px; }
+.hero-embers span:nth-child(2) { left: 22%; animation-delay: 0.9s; --drift: -14px; }
+.hero-embers span:nth-child(3) { left: 40%; animation-delay: 1.8s; --drift: 6px; }
+.hero-embers span:nth-child(4) { left: 60%; animation-delay: 0.5s; --drift: -8px; }
+.hero-embers span:nth-child(5) { left: 78%; animation-delay: 2.3s; --drift: 12px; }
+.hero-embers span:nth-child(6) { left: 92%; animation-delay: 1.3s; --drift: -6px; }
+
+.hero-card {
+  position: relative;
+  max-width: 800px;
+  background: rgba(26, 26, 46, 0.85);
+  color: white;
+  text-align: center;
+  padding: 48px;
+  border: 2px solid var(--gold-color);
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.hero-frame-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--gold-color);
+  z-index: 2;
+}
+
+.hero-frame-corner.tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.hero-frame-corner.tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.hero-frame-corner.bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.hero-frame-corner.br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+.hero-glyph {
+  font-size: 2rem;
+  color: var(--gold-color);
+  margin-bottom: 8px;
+  animation: glowPulse 3s infinite;
+}
+
+.hero-card h1 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  color: var(--gold-color);
+  letter-spacing: 2px;
+}
+
+.glow-title {
+  animation: glowPulse 3s infinite;
+}
+
+.hero-card p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.featured-section {
+  padding: 24px 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--gold-color);
+  padding-bottom: 8px;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: var(--gold-color);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  position: relative;
+  cursor: pointer;
+  height: 100%;
+  background: var(--card-bg);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.product-card img {
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--primary-color);
+  transition: transform 0.3s;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.product-card h3 {
+  font-size: 1.1rem;
+  margin: 16px 0 8px;
+  min-height: 2.5em;
+  color: var(--text-primary);
+}
+
+.category-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0 0 12px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--gold-color);
+}
+
+.stock {
+  font-size: 0.85rem;
+  color: #4caf50;
+}
+
+.stock.low {
+  color: #f44336;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 16px;
+  color: var(--text-secondary);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px;
+  color: var(--text-secondary);
+}
+
+.empty-state mat-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  color: var(--gold-color);
+}
+
+.testimonials-section {
+  padding: 48px 0;
+  background: rgba(26, 26, 46, 0.5);
+  border-radius: 12px;
+  margin-top: 32px;
+}
+
+.testimonials-section h2 {
+  text-align: center;
+  color: var(--gold-color);
+  margin-bottom: 32px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 0 24px;
+}
+
+.testimonial-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.stars {
+  color: var(--gold-color);
+  margin-bottom: 12px;
+}
+
+.stars mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.testimonial-author {
+  text-align: right;
+  color: var(--gold-color);
+  font-weight: 500;
+}

@@ -1,0 +1,45 @@
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.two-columns {
+  flex-direction: row;
+  gap: 16px;
+}
+
+.two-columns mat-form-field {
+  flex: 1;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.advanced-section {
+  margin-top: 8px;
+}
+
+.checkbox-row {
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  padding: 8px 0;
+}
+
+.checkbox-row mat-checkbox {
+  margin-right: 16px;
+}
+
+.dialog-glyph {
+  color: var(--gold-color);
+  margin-right: 6px;
+}

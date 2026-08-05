@@ -1,0 +1,80 @@
+<div class="filters-section">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search Products</mat-label>
+    <input matInput [(ngModel)]="searchTerm" (keyup.enter)="onSearch()" placeholder="Name, SKU, or description">
+    <button matSuffix mat-icon-button (click)="onSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="category-filters">
+    <button mat-stroked-button
+            [class.active]="selectedCategory === null"
+            (click)="onCategoryFilter(null)">
+      All Products
+    </button>
+    <button mat-stroked-button
+            *ngFor="let cat of categories"
+            [class.active]="selectedCategory === cat.id"
+            (click)="onCategoryFilter(cat.id)">
+      {{cat.name}}
+    </button>
+  </div>
+</div>
+
+<div class="products-container" *ngIf="!loading">
+  <div class="products-grid">
+    <mat-card class="product-card reveal" [style.animation-delay.ms]="i * 60" *ngFor="let product of products; let i = index" (click)="viewProduct(product.id)">
+<img mat-card-image
+            [src]="getImageForProduct(product)"
+            [alt]="product.name">
+      <mat-card-content>
+        <div class="product-header">
+          <h3>{{product.name}}</h3>
+          <span class="sku">SKU: {{product.sku}}</span>
+        </div>
+        <p class="category-tag">{{product.category?.name || 'Uncategorized'}}</p>
+        <div class="product-footer">
+          <span class="price">${{product.price | number:'1.2-2'}}</span>
+          <span class="stock" [class.low-stock]="product.stock_quantity <= 0"
+                [class.warning]="product.stock_quantity > 0 && product.stock_quantity <= product.min_stock_level">
+            {{product.stock_quantity > 0 ? product.stock_quantity + ' in stock' : 'Out of stock'}}
+          </span>
+        </div>
+         @if (product.is_3d_print) {
+           <div class="chips">
+             <mat-chip color="accent">3D Printed</mat-chip>
+             @if (product.resin_type) {
+               <mat-chip>{{product.resin_type}}</mat-chip>
+             }
+           </div>
+         }
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="viewProduct(product.id); $event.stopPropagation()">
+          View Details
+        </button>
+        <button mat-stroked-button (click)="$event.stopPropagation(); addToCart(product)">
+          Add to Cart
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <mat-paginator [length]="totalProducts"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[8, 12, 24]"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
+
+<div class="loading-container" *ngIf="loading">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  <p>Loading products...</p>
+</div>
+
+<div class="empty-state" *ngIf="!loading && products.length === 0">
+  <mat-icon>search_off</mat-icon>
+  <h3>No products found</h3>
+  <p>Try adjusting your search or category filter</p>
+</div>

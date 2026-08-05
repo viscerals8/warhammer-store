@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <radialGradient id="ork-bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#1c2414"/>
+      <stop offset="100%" stop-color="#10140c"/>
+    </radialGradient>
+    <radialGradient id="ork-glow" cx="50%" cy="45%" r="42%">
+      <stop offset="0%" stop-color="#4c7a1f" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#4c7a1f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ork-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8bc34a"/>
+      <stop offset="100%" stop-color="#3e6b1a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#ork-bg)"/>
+  <circle cx="200" cy="140" r="110" fill="url(#ork-glow)"/>
+
+  <!-- rusty rivets instead of gold rings -->
+  <circle cx="200" cy="140" r="88" fill="none" stroke="#8d6e3a" stroke-width="4" stroke-dasharray="10 6" opacity="0.8"/>
+  <g fill="#8d6e3a">
+    <circle cx="200" cy="52" r="4"/>
+    <circle cx="200" cy="228" r="4"/>
+    <circle cx="112" cy="140" r="4"/>
+    <circle cx="288" cy="140" r="4"/>
+  </g>
+
+  <!-- jagged crossed choppas -->
+  <g>
+    <path d="M140 90 L230 190 L216 200 L128 104 Z" fill="url(#ork-green)" stroke="#1c2414" stroke-width="2"/>
+    <path d="M120 96 L104 76 L118 82 L126 66 L136 88 Z" fill="#c0c0c0" stroke="#1c2414" stroke-width="1.5"/>
+    <path d="M260 90 L170 190 L184 200 L272 104 Z" fill="url(#ork-green)" stroke="#1c2414" stroke-width="2"/>
+    <path d="M280 96 L296 76 L282 82 L274 66 L264 88 Z" fill="#c0c0c0" stroke="#1c2414" stroke-width="1.5"/>
+  </g>
+
+  <!-- ork skull -->
+  <g fill="#e8e0c8" stroke="#1c2414" stroke-width="2">
+    <ellipse cx="200" cy="150" rx="34" ry="28"/>
+    <path d="M172 158 q28 22 56 0 q-4 18-28 18 q-24 0-28 -18 z"/>
+    <path d="M180 130 l14 16 l-14 4 z" fill="#3e6b1a" stroke="none"/>
+    <path d="M220 130 l-14 16 l14 4 z" fill="#3e6b1a" stroke="none"/>
+    <path d="M186 170 l6 10 l6 -10 M202 170 l6 10 l6 -10" fill="none" stroke="#1c2414" stroke-width="2"/>
+    <path d="M170 148 l-14 -4 l14 12 z M230 148 l14 -4 l-14 12 z" fill="#c0c0c0" stroke="none"/>
+  </g>
+
+  <text x="200" y="252" text-anchor="middle" font-family="Cinzel, serif" font-size="20" fill="#8bc34a" letter-spacing="3">WAAAGH!</text>
+</svg>
