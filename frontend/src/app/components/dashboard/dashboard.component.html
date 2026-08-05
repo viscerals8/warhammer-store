@@ -1,0 +1,157 @@
+<div class="dashboard-page">
+  <div class="page-header">
+    <h1>Sales Dashboard</h1>
+    <p class="subtitle">Monitor your store performance</p>
+  </div>
+
+  <div class="loading-container" *ngIf="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <p>Loading dashboard...</p>
+  </div>
+
+  <div class="dashboard-content" *ngIf="!loading && stats">
+    <!-- Key Metrics Cards -->
+    <div class="metrics-grid">
+      <mat-card class="metric-card">
+        <mat-card-content>
+          <div class="metric-icon revenue">
+            <mat-icon>attach_money</mat-icon>
+          </div>
+          <div class="metric-info">
+            <span class="metric-label">Total Revenue</span>
+            <span class="metric-value">${{stats.total_revenue | number:'1.0-0'}}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="metric-card">
+        <mat-card-content>
+          <div class="metric-icon orders">
+            <mat-icon>receipt_long</mat-icon>
+          </div>
+          <div class="metric-info">
+            <span class="metric-label">Total Orders</span>
+            <span class="metric-value">{{stats.total_orders}}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="metric-card">
+        <mat-card-content>
+          <div class="metric-icon products">
+            <mat-icon>inventory_2</mat-icon>
+          </div>
+          <div class="metric-info">
+            <span class="metric-label">Active Products</span>
+            <span class="metric-value">{{stats.total_products}}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="metric-card">
+        <mat-card-content>
+          <div class="metric-icon customers">
+            <mat-icon>people</mat-icon>
+          </div>
+          <div class="metric-info">
+            <span class="metric-label">Total Customers</span>
+            <span class="metric-value">{{stats.total_customers}}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="metric-card alert">
+        <mat-card-content>
+          <div class="metric-icon low-stock">
+            <mat-icon>warning</mat-icon>
+          </div>
+          <div class="metric-info">
+            <span class="metric-label">Low Stock Items</span>
+            <span class="metric-value warning">{{stats.low_stock_products}}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="analytics-grid">
+      <!-- Top Selling Products -->
+      <mat-card class="analytics-card">
+        <mat-card-header>
+          <mat-card-title>Top Selling Products</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="top-products-list">
+            <div class="product-rank" *ngFor="let product of topProducts; let i = index">
+              <span class="rank-badge" [class.top]="i < 3">{{i + 1}}</span>
+              <div class="product-details">
+                <span class="product-name">{{product.product_name}}</span>
+                <span class="product-sku">{{product.sku}}</span>
+              </div>
+              <div class="product-stats">
+                <span class="sold-count">{{product.total_quantity}} sold</span>
+                <span class="revenue">${{product.total_revenue | number:'1.0-0'}}</span>
+              </div>
+            </div>
+          </div>
+          @if (topProducts.length === 0) {
+            <p class="empty-message">No sales data available</p>
+          }
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Monthly Sales Trend -->
+      <mat-card class="analytics-card">
+        <mat-card-header>
+          <mat-card-title>Monthly Sales Trend</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="monthly-sales-list">
+            <div class="month-row" *ngFor="let sale of monthlySales | reverse">
+              <span class="month-label">{{sale.month}}</span>
+              <div class="month-stats">
+                <span class="orders-count">{{sale.total_orders}} orders</span>
+                <span class="sales-amount">${{sale.total_sales | number:'1.0-0'}}</span>
+              </div>
+            </div>
+          </div>
+          @if (monthlySales.length === 0) {
+            <p class="empty-message">No monthly data available</p>
+          }
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Inventory Status -->
+    <mat-card class="analytics-card full-width">
+      <mat-card-header>
+        <mat-card-title>Inventory Status</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="inventory-grid">
+          <div class="inventory-stat">
+            <span class="label">Active Products</span>
+            <span class="value success">{{stats.total_products}}</span>
+          </div>
+          <div class="inventory-stat">
+            <span class="label">Low Stock</span>
+            <span class="value warning">{{stats.low_stock_products}}</span>
+          </div>
+        </div>
+        <mat-progress-bar
+          *ngIf="stats.total_products > 0"
+          mode="determinate"
+          [value]="(stats.low_stock_products / stats.total_products) * 100">
+        </mat-progress-bar>
+        <p class="inventory-note">
+          Products at or below minimum stock level require reordering
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="empty-state" *ngIf="!loading && !stats">
+    <mat-icon>info</mat-icon>
+    <h3>No Data Available</h3>
+    <p>There is no sales data to display yet.</p>
+  </div>
+</div>

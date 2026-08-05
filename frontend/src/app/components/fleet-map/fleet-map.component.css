@@ -1,0 +1,153 @@
+.fleet-page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 12px 24px;
+}
+
+.page-header h1 {
+  margin: 0 0 4px;
+  color: var(--gold-color);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.fleet-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+}
+
+@media (max-width: 992px) {
+  .fleet-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.map-panel {
+  padding: 8px;
+  overflow: hidden;
+}
+
+#fleet-map {
+  width: 100%;
+  height: 560px;
+  border-radius: 6px;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vehicles-card,
+.zones-card {
+  padding: 16px 20px;
+}
+
+.vehicles-card h3,
+.zones-card h3 {
+  margin: 0 0 12px;
+  color: var(--gold-color);
+  font-size: 1.05rem;
+}
+
+.vehicle-row,
+.zone-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.vehicle-row:last-child,
+.zone-row:last-child {
+  border-bottom: none;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--text-secondary);
+}
+
+.dot.delivering { background: #4caf50; box-shadow: 0 0 6px #4caf50; }
+.dot.idle { background: #c0c0c0; }
+.dot.returning { background: #e08a2b; }
+
+.vehicle-info,
+.zone-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.vehicle-info strong,
+.zone-info strong {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.vehicle-info small,
+.zone-info small {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
+.zone-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.zone-cost {
+  color: var(--gold-color);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.empty-note {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+::ng-deep .vehicle-pin {
+  font-size: 20px;
+  text-align: center;
+  line-height: 30px;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.7));
+}
+
+::ng-deep .leaflet-popup-content-wrapper {
+  background: var(--dark-bg);
+  color: var(--text-primary);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+::ng-deep .leaflet-popup-tip {
+  background: var(--dark-bg);
+}

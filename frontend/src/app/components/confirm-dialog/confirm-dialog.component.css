@@ -1,0 +1,9 @@
+.dialog-glyph {
+  color: var(--gold-color);
+  margin-right: 6px;
+}
+
+mat-dialog-content p {
+  color: var(--text-primary);
+  margin: 0;
+}

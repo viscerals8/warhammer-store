@@ -1,0 +1,22 @@
+.orders-page {
+  padding: 24px 0;
+}
+
+.page-header h1 {
+  color: var(--gold-color);
+  margin-bottom: 24px;
+}
+
+.orders-table {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 48px;
+}

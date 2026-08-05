@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <radialGradient id="ta-bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#2a2010"/>
+      <stop offset="100%" stop-color="#14100a"/>
+    </radialGradient>
+    <radialGradient id="ta-glow" cx="50%" cy="45%" r="42%">
+      <stop offset="0%" stop-color="#e08a2b" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#e08a2b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ta-ochre" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f2a94e"/>
+      <stop offset="100%" stop-color="#a85f1a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#ta-bg)"/>
+  <circle cx="200" cy="140" r="110" fill="url(#ta-glow)"/>
+
+  <!-- clean geometric hex ring, Tau caste discipline -->
+  <polygon points="200,58 260,94 260,166 200,202 140,166 140,94"
+           fill="none" stroke="#3fc1c9" stroke-width="2.5"/>
+  <polygon points="200,74 246,101 246,159 200,186 154,159 154,101"
+           fill="none" stroke="#d4af37" stroke-width="1" opacity="0.6"/>
+
+  <!-- stylized Tau caste rune (three-pronged) -->
+  <g fill="url(#ta-ochre)" stroke="#3a2408" stroke-width="1.5">
+    <path d="M200 96 l14 34 h-10 l0 42 h-8 l0 -42 h-10 z"/>
+    <path d="M164 118 l30 18 l-6 8 l-32 -14 z"/>
+    <path d="M236 118 l-30 18 l6 8 l32 -14 z"/>
+  </g>
+  <circle cx="200" cy="150" r="8" fill="#3fc1c9" stroke="#3a2408" stroke-width="1"/>
+
+  <text x="200" y="252" text-anchor="middle" font-family="Cinzel, serif" font-size="16" fill="#f2a94e" letter-spacing="3">FOR THE GREATER GOOD</text>
+</svg>
