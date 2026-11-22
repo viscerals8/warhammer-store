@@ -70,6 +70,26 @@ trasin/
 
 Documentación más detallada (modelo de datos completo, decisiones de diseño, bugs conocidos ya corregidos) en [`docs/DOCUMENTATION.md`](docs/DOCUMENTATION.md).
 
+## Capturas
+
+| Inicio | Catálogo | Detalle de producto |
+|---|---|---|
+| ![Inicio](docs/capturas/01-inicio.png) | ![Catálogo](docs/capturas/02-catalogo.png) | ![Detalle](docs/capturas/03-detalle-producto.png) |
+
+| Login | Carrito | Checkout |
+|---|---|---|
+| ![Login](docs/capturas/04-login.png) | ![Carrito](docs/capturas/05-carrito.png) | ![Checkout](docs/capturas/06-checkout.png) |
+
+| Dashboard | Gestión de pedidos | Gestión de productos |
+|---|---|---|
+| ![Dashboard](docs/capturas/07-dashboard.png) | ![Pedidos](docs/capturas/08-admin-pedidos.png) | ![Productos](docs/capturas/09-admin-productos.png) |
+
+| Mapa de flota |
+|---|
+| ![Mapa de flota](docs/capturas/10-mapa-flota.png) |
+
+🎬 **Video del recorrido completo:** [docs/demo-warhammer-store.webm](docs/demo-warhammer-store.webm) (se descarga para verlo).
+
 ## Licencia
 
 Proyecto educativo / de portfolio.
